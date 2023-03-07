@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:test_flutter/style/vts_color.dart';
 import 'package:test_flutter/style/vts_common.dart';
@@ -245,14 +246,15 @@ class _VTSTextFieldState extends State<VTSTextField> {
               onSaved: widget.onSaved,
               validator: widget.validator ??
                   (value) {
-                    setState(() {
+                    SchedulerBinding.instance.addPostFrameCallback((_){setState(() {
                       if (value == null || value.trim().isEmpty) {
                         onError = true;
                       } else {
                         onError = false;
                       }
                       return;
-                    });
+                    });});
+
                   },
               inputFormatters: widget.inputFormatters,
               enabled: widget.enabled ?? false,

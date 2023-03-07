@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:test_flutter/avatar/index.dart';
 import 'package:test_flutter/custom_textfield.dart';
@@ -56,6 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 keyVTS: viewKeyEn,
                 controller: controller,
                 enabled: true,
+                autovalidateMode: AutovalidateMode.always,
               ),
               ElevatedButton(
                 onPressed: () {
